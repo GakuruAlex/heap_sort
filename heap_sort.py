@@ -45,10 +45,14 @@ class BinaryTree:
                 node.left = Node(numbers[left])
         if right < len(numbers):
                 node.right = Node(numbers[right])
-        if (index + left) % 2 != 0:
-                self.create_binary_tree(numbers= numbers, node = node.left, index= left)
-        if (index + right) % 2 == 0:
-                self.create_binary_tree(numbers= numbers, node= node.right, index= right)
+        # if (index + left) % 2 != 0:
+        #         self.create_binary_tree(numbers= numbers, node = node.left, index= left)
+        # if (index + right) % 2 == 0:
+        #         self.create_binary_tree(numbers= numbers, node= node.right, index=index + right)
+        # node.left =  self.create_binary_tree(numbers= numbers, node = node.left, index= index + left)
+        # node.right = self.create_binary_tree(numbers= numbers, node= node.right, index= index + right)
+        self.create_binary_tree(numbers= numbers, node = node.left, index= index + left)
+        self.create_binary_tree(numbers= numbers, node= node.right, index= index + right)
         return node
 
 
