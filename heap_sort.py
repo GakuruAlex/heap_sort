@@ -21,25 +21,34 @@ class BinaryTree:
         #     return Node(numbers[0])
         # if len(numbers) > 3:
         #     node.left = self.create_binary_tree()
-        if index == 0:
+        # if index == 0:
+        #     node = Node(numbers[index])
+        #     self.root = node
+        # if node == None:
+        #     return None
+        # while index < len(numbers):
+        #     node_index_left = 2 * index + 1
+        #     node_index_right = 2 * index + 2
+        #     if  node_index_left  < len(numbers):
+        #         node.left = Node(numbers[node_index_left])
+        #     if  node_index_right < len(numbers):
+        #         node.right = Node(numbers[node_index_right])
+        #     index += 1
+        if  index == 0:
             node = Node(numbers[index])
             self.root = node
         if node == None:
-            return
-        if index < len(numbers):
-            i = 2 * index
-            if i + 1 < len(numbers):
-                if node.left == None:
-                    node.left = Node(numbers[i + 1])
-            if i + 2 < len(numbers):
-                if node.right == None:
-                    node.right = Node(numbers[i + 2])
-            if index % 2 == 0:
-                self.create_binary_tree(node = node.right, numbers= numbers, index= index + 1)
-            if index % 2 != 0:
-                self.create_binary_tree(node= node.left, numbers= numbers, index = index + 1)
-        else:
-            return
+            return None
+        left = 2 * index + 1
+        right = 2 * index + 2
+        if left < len(numbers):
+                node.left = Node(numbers[left])
+        if right < len(numbers):
+                node.right = Node(numbers[right])
+        if (index + left) % 2 != 0:
+                self.create_binary_tree(numbers= numbers, node = node.left, index= left)
+        if (index + right) % 2 == 0:
+                self.create_binary_tree(numbers= numbers, node= node.right, index= right)
         return node
 
 
